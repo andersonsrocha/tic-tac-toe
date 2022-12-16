@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/public/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/src/assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
+    <script type="module" src="index.js"></script>
+
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <main class="content">
+      <section class="title">
+        <h1>Jogo da Velha</h1>
+      </section>
+
+      <section class="display">
+        <div class="scoreboard">
+          <div>
+            <span><i class="fa fa-times" aria-hidden="true"></i></span>
+            <span class="scoreboard-player-X">-</span>
+          </div>
+          <div>
+            <span><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+            <span class="scoreboard-player-O">-</span>
+          </div>
+        </div>
+        <div class="display-info">Vez de <span class="display-player playerX">X</span></div>
+      </section>
+
+      <section class="container player-X">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="end">
+          <span class="winner"></span>
+          <button id="restart">Reiniciar</button>
+        </div>
+      </section>
+
+      <section class="controller">
+        <button id="restart-game">Reiniciar jogo</button>
+      </section>
+    </main>
+  </body>
+</html>
