@@ -124,30 +124,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const action = (tile, index) => {
     const { humanSymbol, iaSymbol, running } = data;
 
-    if (!running && !board.isTerminal().isTerminal) {
-      data.running = true;
-      tile.classList.add(`player-${humanSymbol}`);
-      board.insert(humanSymbol, index);
-      changePlayer(humanSymbol);
+    const move = board.obtainAvailableMoves().find((m) => m == index);
+    if (running || board.isTerminal().isTerminal || move == undefined) return;
 
-      if (board.isTerminal().isTerminal) {
-        announce();
-        return;
-      }
+    data.running = true;
+    tile.classList.add(`player-${humanSymbol}`);
+    board.insert(humanSymbol, index);
+    changePlayer(humanSymbol);
 
-      p.obtainBestMove(board, false, (score) => {
-        setTimeout(() => {
-          const index = Number(score);
-          board.insert(iaSymbol, index);
-          tiles[index].classList.add(`player-${iaSymbol}`);
-
-          if (board.isTerminal().isTerminal) announce();
-
-          changePlayer(iaSymbol);
-          data.running = false;
-        }, 600);
-      });
+    if (board.isTerminal().isTerminal) {
+      announce();
+      return;
     }
+
+    p.obtainBestMove(board, false, (score) => {
+      setTimeout(() => {
+        const index = Number(score);
+        board.insert(iaSymbol, index);
+        tiles[index].classList.add(`player-${iaSymbol}`);
+
+        if (board.isTerminal().isTerminal) announce();
+
+        changePlayer(iaSymbol);
+        data.running = false;
+      }, 600);
+    });
   };
 
   /**
